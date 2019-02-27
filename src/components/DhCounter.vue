@@ -1,7 +1,6 @@
 <template>
     <v-container>
         <v-card elevation=8 color="#ccc">
-            
             <v-card-title primary-title class="justify-center"> 
                 <div class='headline timer'>
                     <h1>00</h1>
@@ -16,13 +15,8 @@
             </v-card-text >
             <v-hover>
                 <v-card-actions class="justify-center" slot-scope="{ hover }">  
-                    <v-btn large outline round ripple=false href="/" target="_blank" :color="hover ? '#006651' : 'gray'">
+                    <v-btn large outline round href="/" target="_blank" :color="hover ? '#006651' : 'gray'">
                         <span class="mr-2" :class="{'button-overlay': hover}">Submit on Devpost</span>
-                        <div
-                            v-if="hover"
-                            class="transition-fast-in-fast-out button-overlay"
-                            style="height: 100%;">
-                        </div>
                     </v-btn>
                 </v-card-actions>
             </v-hover>
@@ -50,7 +44,6 @@
     }
     .button-overlay {
         color: #fff;
-
     }
     
 </style>
