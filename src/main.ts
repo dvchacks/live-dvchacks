@@ -1,7 +1,7 @@
 import Vue from "vue";
-import './plugins/vuetify'
+import "./plugins/vuetify";
 import App from "./App.vue";
-import 'vuetify/dist/vuetify.min.css'
+import "vuetify/dist/vuetify.min.css";
 import "./registerServiceWorker";
 
 Vue.config.productionTip = false;

@@ -67,10 +67,10 @@ const hackEnd = new Date(2019, 3, 14, 12, 0, 0).getTime();
 const hackStarts = new Date(2019, 3, 13, 12, 0, 0).getTime();
 
 let getTimeDiff = () => {
-  let now = Date.now()
+  let now = Date.now();
   let timeUntil = hackEnd - now;
   let duration = hackEnd - hackStarts;
-  if(timeUntil < duration){
+  if (timeUntil < duration) {
     return timeUntil > 0 ? timeUntil : 0;
   } else {
     return duration;

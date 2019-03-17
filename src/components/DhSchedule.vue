@@ -157,13 +157,15 @@ export default Vue.extend({
       return this.buttons.filter(btn => btn.title !== "All");
     },
     activeButtons() {
-        return this.buttons.filter(btn => btn.active).map(btn => btn.title);
+      return this.buttons.filter(btn => btn.active).map(btn => btn.title);
     },
     filteredDays: function() {
       return this.days.map(day => ({
         ...day,
-        events: day.events.filter(event =>
-          this.activeButtons.includes('All') || this.activeButtons.includes(event.type)
+        events: day.events.filter(
+          event =>
+            this.activeButtons.includes("All") ||
+            this.activeButtons.includes(event.type)
         )
       }));
     }
