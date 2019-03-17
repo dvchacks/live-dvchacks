@@ -8,6 +8,7 @@
         <div class="card-text">
           <div v-for="(announcement, index) in announcements" :key="index" class="announcement">
             <span v-html="announcement.text"></span>
+            <div class="time-display">{{announcement.time}}</div>
           </div>
         </div>
       </v-card-text>
@@ -19,7 +20,8 @@
   .announcement {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 8px 0;
+    margin: 0 5px;
     text-align: left;
     border-bottom: 3px solid $orange;
   }
@@ -33,6 +35,16 @@
     overflow: auto;
     height: 100%;
   }
+  .announcement{
+    font-size: 18px;
+    text-align: justify;
+  }
+  .time-display{
+    font-size: 14px;
+    color: #ccc;
+    text-align: right;
+    padding-top: 5px;
+  }
   .card-title {
     position: absolute;
     left:0;
@@ -45,6 +57,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
+import * as moment from 'moment'
 export default Vue.extend({
   data() {
     return{
@@ -55,7 +68,10 @@ export default Vue.extend({
     axios.get('/slack/announcements')
     .then( (response) => {
       console.log(response);
-      this.announcements = response.data
+      this.announcements = response.data.map(announcement =>{
+        announcement.time = moment(announcement.time, "X").format("MMM DD, h:mm A");
+        return announcement;
+      })
     })
     .catch(function (error) {
       console.log(error);

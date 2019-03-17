@@ -52,9 +52,9 @@ export default Vue.extend({
     activeButton: "",
     days: [
       {
-        date: moment("2019-04-27"),
+        date: moment("2019-04-13"),
         start: 8,
-        end: 22,
+        end: 21,
         events: [
           {
             title: "Registration starts",
@@ -109,7 +109,7 @@ export default Vue.extend({
         ]
       },
       {
-        date: moment("2019-4-28"),
+        date: moment("2019-4-14"),
         start: 8,
         end: 15,
         events: [
