@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.7e8a89ed8a68a77e9dc1da9719ad9506.js"
+  "/precache-manifest.e9a59875cff4c8991950958869e46f12.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "live-dvchacks"});
