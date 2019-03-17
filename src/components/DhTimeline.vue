@@ -1,13 +1,13 @@
 <template>
   <v-container style="height: 70%; text-align: left">
     <v-layout wrap style="height: 100%; overflow: auto">
-      <v-flex xs12 v-for="day in days" :key="day.date">
-          <div class="day-header">
+      <v-flex xs12 v-for="(day, dayIndex) in days" :key="dayIndex">
+        <div class="day-header">
           <span>
-            {{ day.date.format('MMMM D') }}
+            {{ day.date.format("MMMM D") }}
           </span>
-          <span :style="{ color: colors.purple.darken1 }">
-            {{ day.date.format('dddd') }}
+          <span :style="{ color: '#4ab88a' }">
+            {{ day.date.format("dddd") }}
           </span>
         </div>
         <v-calendar
@@ -19,6 +19,13 @@
           hide-header
         >
           <template v-slot:interval="{ hour, minutesToPixels }">
+            <div
+              class="bar"
+              v-if="hour === day.start && currentTime.diff(dayStarts[dayIndex]) > 0"
+              :style="{
+                top: `${minutesToPixels(currentTime.diff(dayStarts[dayIndex], 'minutes'))}px`
+              }">
+            </div>
             <template v-for="event in day.events">
               <div
                 v-if="hour === +event.time.split(':')[0]"
@@ -36,10 +43,12 @@
                   :style="{ 'background-color': event.color }"
                 ></span>
                 <v-chip
-                  class="white--text ml-3"
+                  class="ml-3"
                   :color="event.color"
                   label
                   small
+                  light
+                  outline
                 >
                   {{ event.title }}
                 </v-chip>
@@ -58,72 +67,32 @@
 
 <script>
 // https://vuetifyjs.com/en/framework/colors#material-colors
-import colors from 'vuetify/es5/util/colors';
-import * as moment from 'moment';
+import colors from "vuetify/es5/util/colors";
+import * as moment from "moment";
 
 export default {
+  props: ["days"],
   data: () => ({
     colors: colors,
-    days:[
-      {
-        date: moment('2019-04-27'),
-        start: 8,
-        end: 22,
-        events: [
-          {
-            title: 'Opening',
-            time: '09:00',
-            duration: 45,
-            color: colors.green.base
-          },
-          {
-            title: 'Lunch',
-            time: '12:00',
-            duration: 60,
-            color: colors.yellow.darken4
-          },
-          {
-            title: 'Workshop 1',
-            time: '14:00',
-            duration: 90,
-            color: colors.blue.base
-          },
-          {
-            title: 'Snack',
-            time: '15:00',
-            duration: 60,
-            color: colors.red.base,
-            offset: 135
-          },
-          {
-            title: 'Workshop 2',
-            time: '16:00',
-            duration: 90,
-            color: colors.purple.base
-          }
-        ]
-      },
-      {
-        date: moment('2019-4-28'),
-        start: 8,
-        end: 15,
-        events: [
-          {
-            title: 'Breakfast',
-            time: '09:00',
-            duration: 45,
-            color: colors.yellow.darken4
-          },
-          {
-            title: 'Judging',
-            time: '12:00',
-            duration: 90,
-            color: colors.purple.base
-          }
-        ]
-      }
-    ]
-  })
+    currentTime: moment(),
+    timer: null
+  }),
+  mounted() {
+    this.timer = setTimeout(() => {
+      this.currentTime = moment();
+    }, 60 * 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
+  computed: {
+    dayStarts() {
+      return this.days.map((day) => {
+        let start = moment(day.date).startOf('day');
+        return start.add(day.start, 'hours');
+      });
+    }
+  }
 };
 </script>
 
@@ -131,11 +100,18 @@ export default {
 .day-header {
   padding-left: 44px;
   padding-top: 1rem;
-  background-color: #fff;
+  //background-color: #fff;
   font-size: 2rem;
   font-weight: bold;
-  color: #424242;
+  color: #fff;
 }
+
+.bar {
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid $orange;
+}
+
 .event {
   position: relative;
   display: inline-block;
@@ -145,7 +121,7 @@ export default {
 
   & .start-circle,
   & .end-circle {
-    content: '';
+    content: "";
     position: absolute;
     width: 8px;
     height: 8px;
