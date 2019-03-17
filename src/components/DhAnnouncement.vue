@@ -62,6 +62,8 @@
 import Vue from "vue";
 import axios from "axios";
 import * as moment from "moment";
+
+
 export default Vue.extend({
   data() {
     return {
@@ -71,10 +73,10 @@ export default Vue.extend({
   beforeMount() {
     axios
       .get("/slack/announcements")
-      .then(response => {
+      .then((response) => {
         console.log(response);
-        this.announcements = response.data.map(announcement => {
-          announcement.time = moment(announcement.time, "X").format(
+        this.announcements = response.data.map((announcement: any) => {
+          announcement.time = moment.unix(announcement.time).format(
             "MMM DD, h:mm A"
           );
           return announcement;
