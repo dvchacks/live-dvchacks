@@ -1,12 +1,13 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-toolbar app fixed>
       <v-toolbar-title class="headline text-uppercase">
-        <span>DVCHACKS</span>
-        <span class="font-weight-light">Live</span>
+        <v-img :src="require('@/assets/dvchacks-logo-white.png')" height="50px" width="50px" class="d-inline-block image"></v-img>
+        <span class="ml-3">DVCHACKS</span>
+        <span class="font-weight-light ml-3">Live</span>
       </v-toolbar-title>
     </v-toolbar>
-    <v-content>
+    <v-content class="main">
       <v-container text-xs-center>
         <v-layout row wrap fill-height>
           <v-flex xs12>
@@ -25,27 +26,35 @@
   </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld'
-import DhCounter from './components/DhCounter'
-import DhAnnouncement from './components/DhAnnouncement'
-import DhSchedule from './components/DhSchedule'
-import DhFooter from './components/DhFooter'
+<style lang="scss">
+.main {
+  .theme--dark {
+    background-color: #031735 !important;
+  }
+}
+.image {
+  vertical-align: middle;
+}
+</style>
 
+<script>
+import DhCounter from "./components/DhCounter";
+import DhAnnouncement from "./components/DhAnnouncement";
+import DhSchedule from "./components/DhSchedule";
+import DhFooter from "./components/DhFooter";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
     DhCounter,
     DhAnnouncement,
     DhSchedule,
-    DhFooter,
+    DhFooter
   },
-  data () {
+  data() {
     return {
       //
-    }
+    };
   }
-}
+};
 </script>
