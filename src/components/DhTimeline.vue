@@ -1,7 +1,7 @@
 <template>
   <v-container style="height: 70%; text-align: left">
     <v-layout wrap style="height: 100%; overflow: auto">
-      <v-flex xs12 v-for="day in days" :key="day.date">
+      <v-flex xs12 v-for="(day, dayIndex) in days" :key="dayIndex">
         <div class="day-header">
           <span>
             {{ day.date.format("MMMM D") }}
@@ -19,6 +19,17 @@
           hide-header
         >
           <template v-slot:interval="{ hour, minutesToPixels }">
+            <div
+              class="bar"
+              v-if="
+                hour === day.start && currentTime.diff(dayStarts[dayIndex]) > 0
+              "
+              :style="{
+                top: `${minutesToPixels(
+                  currentTime.diff(dayStarts[dayIndex], 'minutes')
+                )}px`
+              }"
+            ></div>
             <template v-for="event in day.events">
               <div
                 v-if="hour === +event.time.split(':')[0]"
@@ -66,8 +77,26 @@ import * as moment from "moment";
 export default {
   props: ["days"],
   data: () => ({
-    colors: colors
-  })
+    colors: colors,
+    currentTime: moment(),
+    timer: null
+  }),
+  mounted() {
+    this.timer = setTimeout(() => {
+      this.currentTime = moment();
+    }, 60 * 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
+  computed: {
+    dayStarts() {
+      return this.days.map(day => {
+        let start = moment(day.date).startOf("day");
+        return start.add(day.start, "hours");
+      });
+    }
+  }
 };
 </script>
 
@@ -79,6 +108,12 @@ export default {
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
+}
+
+.bar {
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid $orange;
 }
 
 .event {

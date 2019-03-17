@@ -63,11 +63,18 @@ div .timer {
 
 <script lang="ts">
 import Vue from "vue";
-const hackEnd = new Date(2019, 2, 4, 12, 0, 0).getTime();
+const hackEnd = new Date(2019, 3, 14, 12, 0, 0).getTime();
+const hackStarts = new Date(2019, 3, 13, 12, 0, 0).getTime();
 
 let getTimeDiff = () => {
-  let timeUntil = hackEnd - Date.now();
-  return timeUntil > 0 ? timeUntil : 0;
+  let now = Date.now();
+  let timeUntil = hackEnd - now;
+  let duration = hackEnd - hackStarts;
+  if (timeUntil < duration) {
+    return timeUntil > 0 ? timeUntil : 0;
+  } else {
+    return duration;
+  }
 };
 
 export default Vue.extend({
@@ -87,14 +94,17 @@ export default Vue.extend({
   },
 
   methods: {
-    setTime() {
-      const diffTime = getTimeDiff();
-      let minutes = Math.floor(diffTime / 60000) % 60;
-      let seconds = Math.floor(diffTime / 1000) % 60;
+    calcTime(time: number) {
+      let minutes = Math.floor(time / 60000) % 60;
+      let seconds = Math.floor(time / 1000) % 60;
 
-      this.hours = Math.floor(diffTime / (1000 * 60 * 60));
+      this.hours = Math.floor(time / (1000 * 60 * 60));
       this.minutes = minutes < 10 ? `0${minutes}` : minutes;
       this.seconds = seconds < 10 ? `0${seconds}` : seconds;
+    },
+    setTime() {
+      const diffTime = getTimeDiff();
+      this.calcTime(diffTime);
     }
   }
 });
