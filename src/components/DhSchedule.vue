@@ -5,8 +5,8 @@
         <h1>Schedule</h1>
       </v-card-title>
       <v-card-text>
-        <v-layout>
-          <v-flex xs4 v-for="button in buttons" :key="button.title">
+        <v-layout row wrap>
+          <v-flex v-for="button in buttons" :key="button.title">
             <v-btn
               :outline="!button.hover && !button.active"
               :color="button.color"
@@ -157,13 +157,15 @@ export default Vue.extend({
       return this.buttons.filter(btn => btn.title !== "All");
     },
     activeButtons() {
-        return this.buttons.filter(btn => btn.active).map(btn => btn.title);
+      return this.buttons.filter(btn => btn.active).map(btn => btn.title);
     },
     filteredDays: function() {
       return this.days.map(day => ({
         ...day,
-        events: day.events.filter(event =>
-          this.activeButtons.includes('All') || this.activeButtons.includes(event.type)
+        events: day.events.filter(
+          event =>
+            this.activeButtons.includes("All") ||
+            this.activeButtons.includes(event.type)
         )
       }));
     }

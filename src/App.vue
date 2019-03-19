@@ -2,21 +2,26 @@
   <v-app dark>
     <v-toolbar app fixed>
       <v-toolbar-title class="headline text-uppercase">
-        <v-img :src="require('@/assets/dvchacks-logo-white.png')" height="50px" width="50px" class="d-inline-block image"></v-img>
+        <v-img
+          :src="require('@/assets/dvchacks-logo-white.png')"
+          height="50px"
+          width="50px"
+          class="d-inline-block image"
+        ></v-img>
         <span class="ml-3">DVCHACKS</span>
         <span class="font-weight-light ml-2 live-text">Live</span>
       </v-toolbar-title>
     </v-toolbar>
     <v-content class="main">
-      <v-container text-xs-center>
+      <v-container grid-list-md text-xs-center>
         <v-layout row wrap fill-height>
-          <v-flex xs12>
+          <v-flex xs12 md12>
             <DhCounter />
           </v-flex>
-          <v-flex xs4>
+          <v-flex xs12 md4>
             <DhAnnouncement />
           </v-flex>
-          <v-flex xs8>
+          <v-flex xs12 md8>
             <DhSchedule />
           </v-flex>
         </v-layout>
@@ -32,7 +37,7 @@
     background-color: $dark-blue !important;
   }
 }
-.live-text{
+.live-text {
   color: $orange;
 }
 .image {

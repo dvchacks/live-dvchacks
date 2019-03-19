@@ -21,11 +21,15 @@
           <template v-slot:interval="{ hour, minutesToPixels }">
             <div
               class="bar"
-              v-if="hour === day.start && currentTime.diff(dayStarts[dayIndex]) > 0"
+              v-if="
+                hour === day.start && currentTime.diff(dayStarts[dayIndex]) > 0
+              "
               :style="{
-                top: `${minutesToPixels(currentTime.diff(dayStarts[dayIndex], 'minutes'))}px`
-              }">
-            </div>
+                top: `${minutesToPixels(
+                  currentTime.diff(dayStarts[dayIndex], 'minutes')
+                )}px`
+              }"
+            ></div>
             <template v-for="event in day.events">
               <div
                 v-if="hour === +event.time.split(':')[0]"
@@ -87,9 +91,9 @@ export default {
   },
   computed: {
     dayStarts() {
-      return this.days.map((day) => {
-        let start = moment(day.date).startOf('day');
-        return start.add(day.start, 'hours');
+      return this.days.map(day => {
+        let start = moment(day.date).startOf("day");
+        return start.add(day.start, "hours");
       });
     }
   }
