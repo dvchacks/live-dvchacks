@@ -1,6 +1,6 @@
 <template>
-  <v-container style="display:flex; text-align: left">
-    <v-layout wrap style="height: 100%; overflow: auto">
+  <v-container style="overflow:auto; text-align: left">
+    <v-layout wrap style="height: 100%;">
       <v-flex xs12 v-for="(day, dayIndex) in days" :key="dayIndex">
         <div class="day-header">
           <span>
