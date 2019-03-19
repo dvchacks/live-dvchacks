@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-card elevation="8" color="#ccc" height="75vh">
+    <v-card elevation="8" color="#ccc" height="75vh" class="schedule-card">
       <v-card-title class="justify-center">
         <h1>Schedule</h1>
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="card-content">
         <v-layout row wrap>
           <v-flex v-for="button in buttons" :key="button.title">
             <v-btn
@@ -22,8 +22,8 @@
             </v-btn>
           </v-flex>
         </v-layout>
+        <DhTimeline :days="filteredDays" />
       </v-card-text>
-      <DhTimeline :days="filteredDays" />
     </v-card>
   </v-container>
 </template>
@@ -31,6 +31,16 @@
 <style lang="scss" scoped>
 .hover {
   color: #fff;
+}
+.card-content{
+  position: absolute;
+  top: 74px;
+  bottom: 0;
+  display:flex;
+  flex-direction: column;
+}
+.schedule-card{
+  // position: relative;
 }
 </style>
 
@@ -43,7 +53,7 @@ import moment from "moment";
 export default Vue.extend({
   data: () => ({
     buttons: [
-      { title: "All", color: "#4ab88a", hover: false, active: true },
+      { title: "All", color: "#017550", hover: false, active: true },
       { title: "Workshops", color: "light-blue", hover: false, active: false },
       { title: "Activities", color: "red", hover: false, active: false },
       { title: "Main Event", color: "cyan", hover: false, active: false },

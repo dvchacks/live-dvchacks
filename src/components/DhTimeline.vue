@@ -1,12 +1,12 @@
 <template>
-  <v-container style="height: 70%; text-align: left">
+  <v-container style="display:flex; text-align: left">
     <v-layout wrap style="height: 100%; overflow: auto">
       <v-flex xs12 v-for="(day, dayIndex) in days" :key="dayIndex">
         <div class="day-header">
           <span>
             {{ day.date.format("MMMM D") }}
           </span>
-          <span :style="{ color: '#4ab88a' }">
+          <span :style="{ color: '#017550' }">
             {{ day.date.format("dddd") }}
           </span>
         </div>
@@ -99,6 +99,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.v-calendar .v-calendar-daily__scroll-area {
+  overflow-y: hidden;
+}
+</style>
 
 <style scoped lang="scss">
 .day-header {
