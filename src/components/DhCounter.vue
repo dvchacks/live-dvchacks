@@ -15,6 +15,7 @@
       </v-card-text>
       <v-card-actions class="justify-center">
         <v-btn
+          light
           large
           href="/"
           target="_blank"
