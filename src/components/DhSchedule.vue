@@ -5,8 +5,8 @@
         <h1>Schedule</h1>
       </v-card-title>
       <v-card-text>
-        <v-layout>
-          <v-flex xs4 v-for="button in buttons" :key="button.title">
+        <v-layout row wrap>
+          <v-flex v-for="button in buttons" :key="button.title">
             <v-btn
               :outline="!button.hover && !button.active"
               :color="button.color"

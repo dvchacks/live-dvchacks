@@ -13,15 +13,15 @@
       </v-toolbar-title>
     </v-toolbar>
     <v-content class="main">
-      <v-container text-xs-center>
+      <v-container grid-list-md text-xs-center>
         <v-layout row wrap fill-height>
-          <v-flex xs12>
+          <v-flex xs12 md12>
             <DhCounter />
           </v-flex>
-          <v-flex xs4>
+          <v-flex xs12 md4>
             <DhAnnouncement />
           </v-flex>
-          <v-flex xs8>
+          <v-flex xs12 md8>
             <DhSchedule />
           </v-flex>
         </v-layout>
