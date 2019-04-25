@@ -6,7 +6,7 @@
           <span>
             {{ day.date.format("MMMM D") }}
           </span>
-          <span :style="{ color: '#017550' }">
+          <span :style="{ color: '#4ab88a' }">
             {{ day.date.format("dddd") }}
           </span>
         </div>

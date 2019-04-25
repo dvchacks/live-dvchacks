@@ -53,7 +53,7 @@ import moment from "moment";
 export default Vue.extend({
   data: () => ({
     buttons: [
-      { title: "All", color: "#017550", hover: false, active: true },
+      { title: "All", color: "#4ab88a", hover: false, active: true },
       { title: "Workshops", color: "light-blue", hover: false, active: false },
       { title: "Activities", color: "red", hover: false, active: false },
       { title: "Main Event", color: "cyan", hover: false, active: false },
@@ -62,7 +62,7 @@ export default Vue.extend({
     activeButton: "",
     days: [
       {
-        date: moment("2019-04-13"),
+        date: moment("2019-04-27"),
         start: 8,
         end: 21,
         events: [
@@ -88,7 +88,14 @@ export default Vue.extend({
             type: "Food"
           },
           {
-            title: "Hacking starts",
+            title: "Team Formation",
+            time: "12:00",
+            duration: 60,
+            color: colors.cyan.base,
+            type: "Main Event"
+          },
+          {
+            title: "Hacking Starts",
             time: "12:00",
             duration: 0,
             color: colors.cyan.base,
@@ -96,37 +103,73 @@ export default Vue.extend({
           },
           {
             title: "Workshop 1",
+            time: "13:00",
+            duration: 60,
+            color: colors.lightBlue.base,
+            type: "Workshops"
+          },
+          {
+            title: "Workshop 2",
             time: "14:00",
-            duration: 90,
+            duration: 60,
             color: colors.lightBlue.base,
             type: "Workshops"
           },
           {
             title: "Snack",
             time: "15:00",
+            duration: 30,
+            color: colors.purple.base,
+            offset: 135,
+            type: "Food"
+          },
+          {
+            title: "Workshop 3",
+            time: "16:00",
+            duration: 60,
+            color: colors.lightBlue.base,
+            type: "Workshops"
+          },
+          {
+            title: "Workshop 4",
+            time: "17:00",
+            duration: 60,
+            color: colors.lightBlue.base,
+            type: "Workshops"
+          },
+          {
+            title: "Dinner",
+            time: "19:00",
             duration: 60,
             color: colors.purple.base,
             offset: 135,
             type: "Food"
           },
           {
-            title: "Workshop 2",
-            time: "16:00",
-            duration: 90,
-            color: colors.lightBlue.base,
-            type: "Workshops"
-          }
+            title: "Venue Closes",
+            time: "20:00",
+            duration: 0,
+            color: colors.cyan.base,
+            type: "Main Event"
+          },
         ]
       },
       {
-        date: moment("2019-4-14"),
+        date: moment("2019-4-28"),
         start: 8,
         end: 15,
         events: [
           {
-            title: "Breakfast",
+            title: "Check-in starts",
             time: "09:00",
-            duration: 45,
+            duration: 60,
+            color: colors.cyan.base,
+            type: "Main Event"
+          },
+          {
+            title: "Lunch",
+            time: "11:00",
+            duration: 60,
             color: colors.purple.base,
             type: "Food"
           },
@@ -134,6 +177,20 @@ export default Vue.extend({
             title: "Judging",
             time: "12:00",
             duration: 90,
+            color: colors.cyan.base,
+            type: "Main Event"
+          },
+          {
+            title: "Hacking Ends",
+            time: "12:00",
+            duration: 0,
+            color: colors.cyan.base,
+            type: "Main Event"
+          },
+          {
+            title: "Closing Ceremony",
+            time: "13:00",
+            duration: 0,
             color: colors.cyan.base,
             type: "Main Event"
           }
