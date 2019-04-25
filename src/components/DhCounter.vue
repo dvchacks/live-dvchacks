@@ -20,7 +20,7 @@
           href="/"
           target="_blank"
           :outline="!hover"
-          color="#006651"
+          color="#4ab88a"
           @mouseenter="hover = true"
           @mouseleave="hover = false"
         >
@@ -64,8 +64,8 @@ div .timer {
 
 <script lang="ts">
 import Vue from "vue";
-const hackEnd = new Date(2019, 3, 14, 12, 0, 0).getTime();
-const hackStarts = new Date(2019, 3, 13, 12, 0, 0).getTime();
+const hackEnd = new Date(2019, 3, 28, 12, 0, 0).getTime();
+const hackStarts = new Date(2019, 3, 27, 12, 0, 0).getTime();
 
 let getTimeDiff = () => {
   let now = Date.now();
