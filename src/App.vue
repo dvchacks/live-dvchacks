@@ -3,7 +3,7 @@
     <v-toolbar app fixed>
       <v-toolbar-title class="headline text-uppercase">
         <v-img
-          :src="require('@/assets/dvchacks-logo-white.png')"
+          :src="require('@/assets/WICS-Club-White.png')"
           height="50px"
           width="50px"
           class="d-inline-block image"
