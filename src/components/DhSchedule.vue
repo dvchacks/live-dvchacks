@@ -102,14 +102,14 @@ export default Vue.extend({
             type: "Main Event"
           },
           {
-            title: "Workshop 1",
+            title: "Workshop 1: Intro to Git & Github",
             time: "13:00",
             duration: 60,
             color: colors.lightBlue.base,
             type: "Workshops"
           },
           {
-            title: "Workshop 2",
+            title: "Workshop 2: Intro to Web Dev",
             time: "14:00",
             duration: 60,
             color: colors.lightBlue.base,
@@ -124,14 +124,14 @@ export default Vue.extend({
             type: "Food"
           },
           {
-            title: "Workshop 3",
+            title: "Workshop 3: Intro to APIs",
             time: "16:00",
             duration: 60,
             color: colors.lightBlue.base,
             type: "Workshops"
           },
           {
-            title: "Workshop 4",
+            title: "Workshop 4: Cloud Computing AWS",
             time: "17:00",
             duration: 60,
             color: colors.lightBlue.base,
